@@ -5,7 +5,6 @@ import org.schema.game.server.controller.BluePrintController;
 import org.schema.game.server.controller.ImportFailedException;
 import org.schema.game.server.controller.MayImportCallback;
 import org.schema.game.server.data.blueprintnw.BlueprintEntry;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -215,7 +214,7 @@ public class StarmadeWorkshop {
 
     public StarmadeWorkshop() {
         workshop = new SteamUGC(ugcCallback);
-        appID = 1; //Todo: get Starmade's app ID
+        appID = 244770;
     }
 
     public void createWorkshopBlueprintEntry(BlueprintEntry blueprint) throws IOException {
