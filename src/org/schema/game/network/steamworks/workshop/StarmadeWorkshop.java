@@ -30,7 +30,41 @@ public class StarmadeWorkshop {
         @Override
         public void onUnsubscribeItem(SteamPublishedFileID publishedFileID, SteamResult result) {
             if(result.equals(SteamResult.OK)) {
-
+                SteamUGC.ItemInstallInfo installInfo = new SteamUGC.ItemInstallInfo();
+                if(workshop.getItemInstallInfo(publishedFileID, installInfo)) {
+                    File fileLocation = new File(installInfo.getFolder());
+                    File workshopFile = Objects.requireNonNull(fileLocation.listFiles())[0];
+                    if(workshopFile.toPath().getFileName().endsWith(".sment")) {
+                        for(BlueprintEntry entry : BluePrintController.defaultBB.readBluePrints()) {
+                            if(workshopFile.getName().contains(entry.getName())) {
+                                try {
+                                    BluePrintController.defaultBB.removeBluePrint(entry);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                    System.err.println("[WORKSHOP] ERROR: Failed to remove Workshop Blueprint " + entry.getName() + " from blueprint database");
+                                }
+                                break;
+                            }
+                        }
+                    } else if(workshopFile.toPath().getFileName().endsWith(".smtpl")) {
+                        File templatesFolder = new File("/templates");
+                        for(File templateFile : Objects.requireNonNull(templatesFolder.listFiles())) {
+                            if(templateFile.getName().equals(workshopFile.getName())) {
+                                templateFile.delete();
+                                break;
+                            }
+                        }
+                    } else if(workshopFile.toPath().getFileName().endsWith(".jar")) {
+                        File modsFolder = new File("/mods");
+                        for(File modFile : Objects.requireNonNull(modsFolder.listFiles())) {
+                            if(modFile.getName().equals(workshopFile.getName())) {
+                                modFile.delete();
+                                break;
+                            }
+                        }
+                    }
+                    workshop.unsubscribeItem(publishedFileID);
+                }
             }
         }
 
@@ -58,15 +92,13 @@ public class StarmadeWorkshop {
                 SteamUGC.ItemInstallInfo itemInstallInfo = new SteamUGC.ItemInstallInfo();
                 if(workshop.getItemInstallInfo(publishedFileID, itemInstallInfo)) {
                     File fileLocation = new File(itemInstallInfo.getFolder());
-                    //final File workshopFile = Objects.requireNonNull(fileLocation.listFiles())[0].getAbsoluteFile();
-                    for(File workshopFile : Objects.requireNonNull(fileLocation.listFiles())) {
-                        final String fileName = workshopFile.getName();
+                    File workshopFile = Objects.requireNonNull(fileLocation.listFiles())[0].getAbsoluteFile();
+                    final String fileName = workshopFile.getName();
                         if(workshopFile.toPath().getFileName().endsWith(".sment")) { //Workshop file is a Blueprint
                             boolean alreadyExists = false;
                             for(BlueprintEntry entry : BluePrintController.defaultBB.readBluePrints()) {
-                                if(fileName.equals(entry.getName())) {
+                                if(fileName.contains(entry.getName())) {
                                     alreadyExists = true;
-                                    workshopFile.delete(); //Clean up old file
                                     break;
                                 }
                             }
@@ -108,10 +140,9 @@ public class StarmadeWorkshop {
 
                             if(new File(templatesFolder.getAbsolutePath() + "/" + workshopFile.getName()).exists()) {
                                 System.err.println("[WORKSHOP] ERROR: Attempted to move Workshop Template file " + fileName + "to /templates directory but the template file name already existed");
-                                workshopFile.delete(); //Clean up old file
                             } else {
                                 try {
-                                    Files.move(workshopFile.toPath(), templatesFolder.toPath());
+                                    Files.copy(workshopFile.toPath(), templatesFolder.toPath());
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                     System.err.println("[WORKSHOP] ERROR: Failed to move Workshop Template file " + fileName + " to /templates directory");
@@ -130,10 +161,9 @@ public class StarmadeWorkshop {
 
                             if(new File(modsFolder.getAbsolutePath() + "/" + workshopFile.getName()).exists()) {
                                 System.err.println("[WORKSHOP] ERROR: Attempted to move Workshop Mod file " + fileName + "to /mods directory but the mod file name already existed");
-                                workshopFile.delete(); //Clean up old file
                             } else {
                                 try {
-                                    Files.move(workshopFile.toPath(), modsFolder.toPath());
+                                    Files.copy(workshopFile.toPath(), modsFolder.toPath());
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                     System.err.println("[WORKSHOP] ERROR: Failed to move Workshop Mod file " + fileName + " to /mods directory");
@@ -143,7 +173,6 @@ public class StarmadeWorkshop {
                     }
                 }
             }
-        }
 
         @Override
         public void onUserFavoriteItemsListChanged(SteamPublishedFileID publishedFileID, boolean wasAddRequest, SteamResult result) {
