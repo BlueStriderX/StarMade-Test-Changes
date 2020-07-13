@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../StarMade/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../StarMade/lib" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/../StarMade/lib" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../StarMade/lib" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="StarMade" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../StarMade" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="file://$MODULE_DIR$/../StarMade/lib/unused/pirkbotjavadocs" />
+          <root url="file://$MODULE_DIR$/../StarMade/schine/lib/pirkbotjavadocs" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../StarMade" />
+          <root url="file://$MODULE_DIR$/../StarMade/launcher/jarbundler/jarbundler-2.3.1/example/src/java" />
+          <root url="file://$MODULE_DIR$/../StarMade/launcher/jarbundler/jarbundler-2.3.1/src" />
+          <root url="file://$MODULE_DIR$/../StarMade/schine/src" />
+          <root url="file://$MODULE_DIR$/../StarMade/src" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/../StarMade" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../StarMade" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../Game Files/StarMade Modded/StarMade/StarMade.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../Game Files/StarMade Dev Build/StarMade/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../../Game Files/StarMade Dev Build/StarMade/lib" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/../../Game Files/StarMade Dev Build/StarMade/lib" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../../Game Files/StarMade Dev Build/StarMade/lib" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../Programming/Resources/steamworks" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../../Programming/Resources/steamworks" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/../../Programming/Resources/steamworks" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../../Programming/Resources/steamworks" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+  </component>
+</module>

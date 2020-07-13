@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="StarMade">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../StarMade" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/../StarMade/lib/unused/pirkbotjavadocs" />
+      <root url="file://$PROJECT_DIR$/../StarMade/schine/lib/pirkbotjavadocs" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../StarMade/launcher/jarbundler/jarbundler-2.3.1/example/src/java" />
+      <root url="file://$PROJECT_DIR$/../StarMade/launcher/jarbundler/jarbundler-2.3.1/src" />
+      <root url="file://$PROJECT_DIR$/../StarMade/schine/src" />
+      <root url="file://$PROJECT_DIR$/../StarMade/src" />
+      <root url="file://$PROJECT_DIR$/../StarMade" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../StarMade" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../StarMade" recursive="false" type="SOURCES" />
+  </library>
+</component>
